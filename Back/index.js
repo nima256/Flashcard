@@ -2,15 +2,14 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
-require("dotenv").config();
 
 mongoose
-  .connect(process.env.MONGO_CONNECTION)
+  .connect("mongodb://localhost:27017/flashcardDB")
   .then(() => {
     console.log("Mongo connection open");
   })
   .catch((e) => {
-    console.log(e);
+    console.error("Error connecting to MongoDB:", e);
   });
 
 app.get("/", (req, res) => {
