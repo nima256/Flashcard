@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 
 const Flashcard = require("./models/Flashcard");
 
+app.use(express.json()); // Parse JSON bodies
+app.use(express.urlencoded({ extended: true }));
+
 mongoose
   .connect("mongodb://localhost:27017/flashcardDB")
   .then(() => {
@@ -36,6 +39,10 @@ app.get("/flashcards", async (req, res) => {
   res.status(200).json({ flashcards });
 });
 
+app.post("/new/flashcard", async (req, res) => {
+  console.log(req.body);
+});
+
 app.listen(port, () => {
-  console.log(`Listening to port ${port}`);
+  console.log(`Url: http://localhost:${port}/`);
 });
