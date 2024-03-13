@@ -40,9 +40,17 @@ app.get("/flashcards", async (req, res) => {
 });
 
 app.post("/new/flashcard", async (req, res) => {
-  console.log(req.body);
-});
+  const { vocabulary, synonym } = req.body;
 
+  const newFlashcard = new Flashcard({
+    vocabulary,
+    synonym,
+  });
+
+  res
+    .status(201)
+    .json({ message: "Created new flashcard.", flashcard: newFlashcard });
+});
 app.listen(port, () => {
   console.log(`Url: http://localhost:${port}/`);
 });

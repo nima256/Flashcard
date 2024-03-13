@@ -6,25 +6,25 @@ const flashcardSchema = new Schema({
     type: String,
     required: true,
   },
-  pronunciation: {
-    type: String,
-    required: true,
-  },
-  partsOfSpeach: {
-    type: String,
-    required: true,
-  },
-  dictionary: {
-    type: String,
-  },
+  // pronunciation: {
+  //   type: String,
+  //   required: true,
+  // },
+  // partsOfSpeach: {
+  //   type: String,
+  //   required: true,
+  // },
+  // dictionary: {
+  //   type: String,
+  // },
   synonym: {
     type: String,
     required: true,
   },
-  example: {
-    type: String,
-    required: true,
-  },
+  // example: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const Flashcard = mongoose.model("Flashcard", flashcardSchema);

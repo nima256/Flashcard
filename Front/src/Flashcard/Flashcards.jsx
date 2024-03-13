@@ -20,11 +20,11 @@ function Flashcards() {
     fetchFlashcards();
   }, []);
 
-  async function addFlashcardHandler(flashcardVocabulary, flashcardSynonym) {
+  async function addFlashcardHandler(vocabulary, synonym) {
     try {
       const newFlashcard = {
-        flashcardVocabulary,
-        flashcardSynonym: flashcardSynonym,
+        vocabulary,
+        synonym,
       };
       let hasError = false;
       const response = await fetch("http://localhost:8000/new/flashcard", {

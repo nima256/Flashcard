@@ -13,17 +13,11 @@ mongoose
 const seedData = [
   {
     vocabulary: "Sniff",
-    pronunciation: "snɪf",
-    partsOfSpeach: "Verb",
     synonym: "Smell",
-    example: "He opened the milk and sniffed it.",
   },
   {
     vocabulary: "Tap",
-    pronunciation: "tæp",
-    partsOfSpeach: "Noun",
     synonym: "Press",
-    example: "She felt a tap on her shoulder.",
   },
 ];
 
