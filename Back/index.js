@@ -47,10 +47,13 @@ app.post("/new/flashcard", async (req, res) => {
     synonym,
   });
 
+  const savedNewFlashcard = await newFlashcard.save();
+
   res
     .status(201)
-    .json({ message: "Created new flashcard.", flashcard: newFlashcard });
+    .json({ message: "Created new flashcard.", flashcard: savedNewFlashcard });
 });
+
 app.listen(port, () => {
   console.log(`Url: http://localhost:${port}/`);
 });
