@@ -1,3 +1,4 @@
+Back/.env
 roadMap.txt
-/Front/node_modules
-/Back/node_modules
+Front/node_modules
+Back/node_modules
