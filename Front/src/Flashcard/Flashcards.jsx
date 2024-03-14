@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import FlashCardList from "./FlashCardList";
-import NewFlashcard from "./NewFlashcard";
+import CreateFlashcard from "./CreateFlashcard";
 
 function Flashcards() {
   const [loadedFlashcards, setLoadedFlashcards] = useState([]);
@@ -20,45 +20,10 @@ function Flashcards() {
     fetchFlashcards();
   }, []);
 
-  async function addFlashcardHandler(vocabulary, synonym) {
-    try {
-      const newFlashcard = {
-        vocabulary,
-        synonym,
-      };
-      let hasError = false;
-      const response = await fetch("http://localhost:8000/new/flashcard", {
-        method: "POST",
-        body: JSON.stringify(newFlashcard),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        hasError = true;
-      }
-      const responseData = await response.json();
-
-      if (hasError) {
-        throw new Error(responseData.message);
-      }
-
-      setLoadedFlashcards((prevFlashcards) => {
-        return prevFlashcards.concat({
-          ...newFlashcard,
-          id: responseData.flashcard._id,
-        });
-      });
-    } catch (error) {
-      alert(error.message);
-    }
-  }
-
   return (
     <>
       {isLoading && <p>Loading...</p>}
-      <NewFlashcard onAddFlashcard={addFlashcardHandler} />
+      <CreateFlashcard setLoadedFlashcards={setLoadedFlashcards} />
       {!isLoading && <FlashCardList loadedFlashcards={loadedFlashcards} />}
     </>
   );
