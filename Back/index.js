@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 
 app.get("/flashcards", async (req, res) => {
   const flashcards = await Flashcard.find({});
-  res.status(200).json({ flashcards });
+  res.status(200).json(flashcards);
 });
 
 app.post("/new/flashcard", async (req, res) => {

@@ -1,32 +1,28 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import FlashCardList from "./FlashCardList";
 import CreateFlashcard from "./CreateFlashcard";
+import { useLoaderData } from "react-router-dom";
 
 function Flashcards() {
-  const [loadedFlashcards, setLoadedFlashcards] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchFlashcards = async () => {
-      setIsLoading(true);
-      const response = await fetch("http://localhost:8000/flashcards");
-
-      const responseData = await response.json();
-
-      setLoadedFlashcards(responseData.flashcards);
-      setIsLoading(false);
-    };
-
-    fetchFlashcards();
-  }, []);
+  const loadedFlashcards = useLoaderData();
 
   return (
     <>
-      {isLoading && <p>Loading...</p>}
-      <CreateFlashcard setLoadedFlashcards={setLoadedFlashcards} />
-      {!isLoading && <FlashCardList loadedFlashcards={loadedFlashcards} />}
+      <CreateFlashcard />
+      <FlashCardList loadedFlashcards={loadedFlashcards} />
     </>
   );
+}
+
+export async function loader() {
+  const res = await fetch("http://localhost:8000/flashcards");
+
+  if (!res.ok) {
+    throw Error("failed to get flashcards");
+  }
+
+  const data = await res.json();
+  return data;
 }
 
 export default Flashcards;
