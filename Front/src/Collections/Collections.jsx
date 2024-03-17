@@ -1,15 +1,19 @@
-// import { useEffect, useState } from "react";
+import { useState } from "react";
 import CollectionList from "./CollectionList";
 import CreateCollection from "./CreateCollection";
 import { useLoaderData } from "react-router-dom";
 
 function Collections() {
-  const loadedCollections = useLoaderData();
+  const [collections, setCollections] = useState(useLoaderData());
+
+  const addCollection = (newCollection) => {
+    setCollections((prevCollections) => [...prevCollections, newCollection]);
+  };
 
   return (
     <>
-      <CreateCollection loadedCollections={loadedCollections} />
-      <CollectionList loadedCollections={loadedCollections} />
+      <CreateCollection addCollection={addCollection} />
+      <CollectionList loadedCollections={collections} />
     </>
   );
 }

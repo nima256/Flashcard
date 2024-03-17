@@ -4,8 +4,8 @@ function CollectionList({ loadedCollections }) {
   return (
     <>
       <ul>
-        {loadedCollections.map((collection) => (
-          <CollectionItems collection={collection} key={collection._id} />
+        {loadedCollections.map((eachCollection, index) => (
+          <CollectionItems key={index} collection={eachCollection} />
         ))}
       </ul>
     </>

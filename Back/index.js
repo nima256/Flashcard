@@ -3,8 +3,6 @@ const app = express();
 const port = 8000;
 const mongoose = require("mongoose");
 
-const Collection = require("./models/Collection");
-
 const collectionRoutes = require("./routes/collectionRoutes");
 
 app.use(express.json()); // Parse JSON bodies

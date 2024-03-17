@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-function CreateCollection({ loadedCollections }) {
+function CreateCollection({ addCollection }) {
   const [enteredCollectionName, setEnteredCollectionName] = useState("");
 
   async function addCollectionHandler(collectionName) {
     try {
       const newCollection = {
-        collectionName,
+        name: collectionName,
       };
       let hasError = false;
+
       const response = await fetch("http://localhost:8000/collection/new", {
         method: "POST",
         body: JSON.stringify(newCollection),
@@ -26,14 +27,10 @@ function CreateCollection({ loadedCollections }) {
         throw new Error(responseData.message);
       }
 
-      loadedCollections((prevCollection) => {
-        return prevCollection.concat({
-          ...newCollection,
-          id: responseData.collection._id,
-        });
-      });
+      addCollection({ ...newCollection, id: responseData.collection._id });
+      setEnteredCollectionName("");
     } catch (error) {
-      alert(error.message);
+      throw new Error(error.message);
     }
   }
 

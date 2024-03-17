@@ -9,15 +9,11 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/new", async (req, res) => {
-  const { vocabulary, synonym } = req.body;
-
+  const { name } = req.body;
   const newCollection = new Collection({
-    vocabulary,
-    synonym,
+    name,
   });
-
   const savedNewCollection = await newCollection.save();
-
   res.status(201).json({
     message: "Created new collection.",
     collection: savedNewCollection,
