@@ -5,6 +5,7 @@ import Login from "./Authentication/Login";
 import Collections from "./Collections/Collections";
 import collectionLoader from "./Loaders/collectionLoader";
 import CreateCollection from "./Collections/CreateCollection";
+import createCollectionAction from "./Actions/createCollectionAction";
 import EditCollection from "./Collections/EditCollection";
 import DeleteCollection from "./Collections/DeleteCollection";
 import BuyPermium from "./Permium/BuyPermium";
@@ -43,8 +44,9 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "/create-collection",
+        path: "/collection/new",
         element: <CreateCollection />,
+        action: createCollectionAction,
       },
       {
         path: "/edit-collection/:collectionId",
