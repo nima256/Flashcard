@@ -2,18 +2,16 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import Signup from "./Authentication/Signup";
 import Login from "./Authentication/Login";
-import Collections, {
-  loader as collectionLoader,
-} from "./Collections/Collections";
+import Collections from "./Collections/Collections";
+import collectionLoader from "./Loaders/collectionLoader";
 import CreateCollection from "./Collections/CreateCollection";
 import EditCollection from "./Collections/EditCollection";
 import DeleteCollection from "./Collections/DeleteCollection";
 import BuyPermium from "./Permium/BuyPermium";
 import HeaderAndFooter from "./Others/HeaderAndFooter";
 import Error from "./Others/Error";
-import OneCollection, {
-  loader as oneCollectionLoader,
-} from "./Collections/OneCollection";
+import OneCollection from "./Collections/OneCollection";
+import oneCollectionLoader from "./Loaders/oneCollectionLoader";
 
 const router = createBrowserRouter([
   {
