@@ -5,7 +5,7 @@ function Header() {
     <div>
       <Link to={"/"}>Home</Link>
       <Link to={"/signup"}>Signup</Link>
-      <Link to={"/flashcards"}>Flashcards</Link>
+      <Link to={"/collection"}>Collection</Link>
     </div>
   );
 }

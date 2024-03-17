@@ -2,13 +2,18 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import Signup from "./Authentication/Signup";
 import Login from "./Authentication/Login";
-import Flashcards, { loader as flashcardsLoader } from "./Flashcard/Flashcards";
-import CreateFlashcard from "./Flashcard/CreateFlashcard";
-import EditFlashcard from "./Flashcard/EditFlashcard";
-import DeleteFlashcard from "./Flashcard/DeleteFlashcard";
+import Collections, {
+  loader as collectionLoader,
+} from "./Collections/Collections";
+import CreateCollection from "./Collections/CreateCollection";
+import EditCollection from "./Collections/EditCollection";
+import DeleteCollection from "./Collections/DeleteCollection";
 import BuyPermium from "./Permium/BuyPermium";
 import HeaderAndFooter from "./Others/HeaderAndFooter";
 import Error from "./Others/Error";
+import OneCollection, {
+  loader as oneCollectionLoader,
+} from "./Collections/OneCollection";
 
 const router = createBrowserRouter([
   {
@@ -28,22 +33,28 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/flashcards",
-        element: <Flashcards />,
-        loader: flashcardsLoader,
+        path: "/collection",
+        element: <Collections />,
+        loader: collectionLoader,
         errorElement: <Error />,
       },
       {
-        path: "/create-flashcard",
-        element: <CreateFlashcard />,
+        path: "/collection/:collectionId",
+        element: <OneCollection />,
+        loader: oneCollectionLoader,
+        errorElement: <Error />,
       },
       {
-        path: "/edit-flashcard/:flashcardId",
-        element: <EditFlashcard />,
+        path: "/create-collection",
+        element: <CreateCollection />,
       },
       {
-        path: "/delete-flashcard/:flashcardId",
-        element: <DeleteFlashcard />,
+        path: "/edit-collection/:collectionId",
+        element: <EditCollection />,
+      },
+      {
+        path: "/delete-collection/:collectionId",
+        element: <DeleteCollection />,
       },
       {
         path: "/buy-permium",
